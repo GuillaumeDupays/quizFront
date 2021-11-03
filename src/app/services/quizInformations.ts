@@ -43,36 +43,42 @@ const questionsByTheme = [
     idQuestion: 11,
     numQuestion: 1,
     contentQuestion: 'Quel est le véritable nom de Batman ?',
-    responses: {
-      a: 'Bruce tout puissant',
-      b: 'Bruce Wayne',
-      c: 'Bruce Pwal',
-      goodRes: 'b',
-    },
+    responses: [
+      {
+        a: 'Bruce tout puissant',
+        b: 'Bruce Wayne',
+        c: 'Bruce Pwal',
+        goodRes: 'b',
+      },
+    ],
   },
   {
     idQuiz: 1,
     idQuestion: 12,
     numQuestion: 2,
     contentQuestion: 'Quels sont les superpouvoirs de Batman ?',
-    responses: {
-      a: 'en 1945',
-      b: 'en 2001',
-      c: 'en 1978',
-      goodRes: 'a',
-    },
+    responses: [
+      {
+        a: 'aucun',
+        b: 'sa fortune',
+        c: 'sa voiture',
+        goodRes: 'a',
+      },
+    ],
   },
   {
     idQuiz: 1,
     idQuestion: 13,
     numQuestion: 3,
     contentQuestion: 'Quelle est la fortune de Batman ?',
-    responses: {
-      a: '10 millions de dollars',
-      b: '100 millions de dollars',
-      c: '1 euro symbolique',
-      goodRes: 'b',
-    },
+    responses: [
+      {
+        a: '10 millions de dollars',
+        b: '100 millions de dollars',
+        c: '1 euro symbolique',
+        goodRes: 'b',
+      },
+    ],
   },
   {
     idQuiz: 2,
@@ -83,7 +89,10 @@ const questionsByTheme = [
       a: 'en 1947',
       b: 'en 1957',
       c: 'en 1961',
-      goodRes: 'a',
+    },
+    goodRes: {
+      idQuestion: 21,
+      idGoodRes: 'b',
     },
   },
   {
@@ -95,7 +104,10 @@ const questionsByTheme = [
       a: 'New York',
       b: 'Seattle',
       c: 'Londres',
-      goodRes: 'a',
+    },
+    goodRes: {
+      idQuestion: 22,
+      idGoodRes: 'a',
     },
   },
 ];

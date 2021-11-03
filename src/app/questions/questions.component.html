@@ -1,6 +1,16 @@
 <h2>Thème choisi : {{ datasByPage.page[0].name }}</h2>
 <div>{{ currentQuestion.contentQuestion }}</div>
-<div>{{ currentQuestion.responses.a }}</div>
-<div>{{ currentQuestion.responses.b }}</div>
-<div>{{ currentQuestion.responses.c }}</div>
+<br />
+
+<div response="resA" (click)="selectResponse(resA)">
+  {{ currentAnswer.responses[0].a }}
+</div>
+<div response="resB" (click)="selectResponse(resB)">
+  {{ currentAnswer.responses[0].b }}
+</div>
+<div response="resC" (click)="selectResponse(resC)">
+  {{ currentAnswer.responses[0].c }}
+</div>
+<br />
+<br />
 <button (click)="nextQuestion()">Next Question</button>

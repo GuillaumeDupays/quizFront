@@ -7,10 +7,11 @@ import { AppComponent } from './app.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { QuizInformations } from './services/quizInformations';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, QuizComponent, QuestionsComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [QuizInformations],
   bootstrap: [AppComponent],
 })
