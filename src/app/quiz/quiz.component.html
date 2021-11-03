@@ -1,0 +1,9 @@
+<div class="app-quiz">
+  <h1>{{ quizTitle }}</h1>
+  <!-- <a routerLink="/terminator" routerLinkActive="active"></a> -->
+  <div *ngFor="let quiz of currentQuizList" class="btns-box">
+    <button [class]="quiz.class" (click)="navigateTo(quiz.page)">
+      {{ quiz.name }}</button
+    ><br /><br />
+  </div>
+</div>

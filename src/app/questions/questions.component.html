@@ -1,0 +1,6 @@
+<h2>Thème choisi : {{ datasByPage.page[0].name }}</h2>
+<div>{{ currentQuestion.contentQuestion }}</div>
+<div>{{ currentQuestion.responses.a }}</div>
+<div>{{ currentQuestion.responses.b }}</div>
+<div>{{ currentQuestion.responses.c }}</div>
+<button (click)="nextQuestion()">Next Question</button>
