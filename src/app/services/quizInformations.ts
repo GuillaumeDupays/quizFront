@@ -85,35 +85,37 @@ const questionsByTheme = [
     idQuestion: 21,
     numQuestion: 1,
     contentQuestion: 'Quand Bowie est-il né ?',
-    responses: {
-      a: 'en 1947',
-      b: 'en 1957',
-      c: 'en 1961',
-    },
-    goodRes: {
-      idQuestion: 21,
-      idGoodRes: 'b',
-    },
+    responses: [
+      {
+        a: '10 millions de dollars',
+        b: '100 millions de dollars',
+        c: '1 euro symbolique',
+        goodRes: 'b',
+      },
+    ],
   },
   {
     idQuiz: 2,
     idQuestion: 22,
     numQuestion: 2,
     contentQuestion: 'Où Bowie est-il né ?',
-    responses: {
-      a: 'New York',
-      b: 'Seattle',
-      c: 'Londres',
-    },
-    goodRes: {
-      idQuestion: 22,
-      idGoodRes: 'a',
-    },
+    responses: [
+      {
+        a: '10 millions de dollars',
+        b: '100 millions de dollars',
+        c: '1 euro symbolique',
+        goodRes: 'b',
+      },
+    ],
   },
 ];
 export class QuizInformations {
   constructor() {}
   public editDataDetails: any = [];
+  public points: number = 0;
+  public arrayLength: number = 0;
+  // before count points, verify if quiz is finished
+  public isQuizEnd: boolean = false;
   private messageSource = new BehaviorSubject(this.editDataDetails);
   changeMessage(message: string) {
     this.messageSource.next(message);
@@ -126,5 +128,19 @@ export class QuizInformations {
   getQuestions() {
     return questionsByTheme;
   }
-  questionsByTheme() {}
+  countPoints(goodRes: string) {
+    if (goodRes) {
+      this.points += 1;
+      console.log('this.points :>> ', this.points);
+    }
+  }
+  filterDataByTheme(currThemeId: string) {
+    const questions = this.getQuestions();
+    questions.filter((e: any) => e.idQuiz === currThemeId);
+    console.log('currThemeId :>> ', currThemeId.length);
+    this.arrayLength = currThemeId.length;
+    // if (this.isQuizEnd) {
+    //   console.log('this is the END :>> ');
+    // }
+  }
 }

@@ -20,17 +20,38 @@ export class QuestionsComponent implements OnInit {
   resA: string = '';
   resB: string = '';
   resC: string = '';
+  points: number = 0;
+  gameMessage: string = '';
   @Input() response: string = '';
+  isQuizEnd: boolean = this.quizService.isQuizEnd;
+  currArrayLength: number = 0;
+  isQuizFinished: boolean = false;
 
-  constructor() {}
+  constructor(private quizService: QuizInformations) {}
   ngOnInit() {
     this.getDatasQuizByPage();
-    this.currentAnswer = this.datasByPage.questionsById[this.questionCounter];
+    console.log(
+      'this.datasByPage.questionsById :>> ',
+      this.datasByPage.questionsById
+    );
+    this.quizService.filterDataByTheme(this.datasByPage.questionsById);
+    this.currArrayLength = this.quizService.arrayLength;
+    console.log('this.currArrayLength :>> ', this.currArrayLength);
     this.initResponses();
   }
   ngAfterViewInit() {}
+  get isEndOfQuiz() {
+    return this.quizService.isQuizEnd;
+  }
+  set isEndOfQuiz(newVal) {
+    this.isEndOfQuiz = newVal;
+  }
   initResponses() {
-    const currAnswer = Object.keys(this.currentAnswer.responses[0]);
+    const currAnwer = this.datasByPage.questionsById[this.questionCounter];
+    console.log('currAnswer :>> ', currAnwer);
+    const currResponses = currAnwer.responses[0];
+    console.log('currResponses :>> ', currResponses);
+    const currAnswer = Object.keys(currResponses);
     currAnswer.filter((response: string) => {
       response === 'a' ? (this.resA = response) : -1,
         response === 'b' ? (this.resB = response) : -1,
@@ -38,12 +59,15 @@ export class QuestionsComponent implements OnInit {
     });
   }
   findTheGoodResponse(response: string) {
-    const goodRes = this.currentAnswer.responses[0].goodRes;
+    console.log('this.currentAnswer :>> ', this.currentAnswer);
+    const goodRes = this.currentAnswer.goodRes;
     response === goodRes
       ? response === this.resA
       : response === this.resB || this.resC;
     if (response === goodRes) {
       console.log('good :>> ', response);
+      this.quizService.countPoints(goodRes);
+      this.points = this.quizService.points;
     } else {
       console.log('Bad :>> ', response);
     }
@@ -53,13 +77,25 @@ export class QuestionsComponent implements OnInit {
   }
   nextQuestion() {
     this.questionCounter += 1;
-    this.currentQuestion = this.datasByPage.questionsById[this.questionCounter];
-    this.currentAnswer = this.datasByPage.questionsById[this.questionCounter];
+    this.currentQuestion =
+      this.datasByPage.questionsById[this.questionCounter] || {};
+    this.currentAnswer =
+      this.datasByPage.questionsById[this.questionCounter]?.responses[0] || [];
+    if (this.currentAnswer.length === 0) {
+      console.log('STOP :>> ');
+      this.gameMessage = 'Quiz is finished';
+      this.isQuizFinished = true;
+    }
   }
   getDatasQuizByPage() {
     // get from quiz component all data you need to questions, answers...
     // second affect to current var, datas correponding like currentQuestion, currentAnswer etc...
     this.datasByPage = history.state;
     this.currentQuestion = this.datasByPage.questionsById[this.questionCounter];
+    console.log('this.currentQuestion :>> ', this.currentQuestion);
+    const currAnwer =
+      this.datasByPage.questionsById[this.questionCounter] || [];
+    this.currentAnswer = currAnwer?.responses[0] || [];
+    console.log('this.currentAnswer :>> ', this.currentAnswer);
   }
 }

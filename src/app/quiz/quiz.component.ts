@@ -33,6 +33,7 @@ export class QuizComponent implements OnInit {
     const questionsById = this.currentQuestions.filter(
       (q: any) => q.idQuiz === page[0]?.quizId
     );
+    console.log('questionsById :>> ', questionsById);
     this.router.navigate([`/questions/${pageName}`], {
       state: { page, questionsById },
     });
