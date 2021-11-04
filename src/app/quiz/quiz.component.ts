@@ -11,6 +11,7 @@ export class QuizComponent implements OnInit {
   currentQuizList: any = {};
   currentQuestions: any = {};
   currentResponses: any = {};
+  currGamer: any = {};
 
   quizTitle: string = 'Choose a theme';
   constructor(
@@ -19,6 +20,8 @@ export class QuizComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.currGamer = history.state;
+    console.log('this.currGamer :>> ', this.currGamer.newGamer);
     this.showQuizList();
     this.currentQuestions = this.quizInformations.getQuestions();
   }

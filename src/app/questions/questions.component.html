@@ -1,8 +1,5 @@
 <h2>Thème choisi : {{ datasByPage.page[0].name }}</h2>
-<h3>
-  Nombre de points :
-  <div *ngIf="isQuizFinished">{{ points }}</div>
-</h3>
+<h1>{{ gameMessage }}</h1>
 <div>{{ currentQuestion.contentQuestion }}</div>
 <br />
 <div response="resA" (click)="selectResponse(resA)">
@@ -17,4 +14,6 @@
 <br />
 <br />
 <button (click)="nextQuestion()" *ngIf="!isQuizFinished">Next Question</button>
-<h1>{{ gameMessage }}</h1>
+<h3>
+  <div *ngIf="isQuizFinished">Total de points :{{ points }}</div>
+</h3>

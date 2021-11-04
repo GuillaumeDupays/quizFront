@@ -1,4 +1,8 @@
 <div class="app-quiz">
+  <!-- <div *ngFor="let the of currGamer"></div>
+  <h1>Bienvenue {{ the.newGamer }}</h1> -->
+  <h1>Bienvenue {{ currGamer?.newGamer }}</h1>
+
   <h1>{{ quizTitle }}</h1>
   <!-- <a routerLink="/terminator" routerLinkActive="active"></a> -->
   <div *ngFor="let quiz of currentQuizList" class="btns-box">

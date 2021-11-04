@@ -8,9 +8,10 @@ import { QuizComponent } from './quiz/quiz.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { QuizInformations } from './services/quizInformations';
 import { FormsModule } from '@angular/forms';
+import { GamerAccountComponent } from './gamer-account/gamer-account.component';
 
 @NgModule({
-  declarations: [AppComponent, QuizComponent, QuestionsComponent],
+  declarations: [AppComponent, QuizComponent, QuestionsComponent, GamerAccountComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [QuizInformations],
   bootstrap: [AppComponent],
