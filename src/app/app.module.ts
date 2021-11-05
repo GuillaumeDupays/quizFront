@@ -7,12 +7,27 @@ import { AppComponent } from './app.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { QuizInformations } from './services/quizInformations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GamerAccountComponent } from './gamer-account/gamer-account.component';
+import { LoginComponent } from './login/login.component';
+import { ScoresComponent } from './scores/scores.component';
 
 @NgModule({
-  declarations: [AppComponent, QuizComponent, QuestionsComponent, GamerAccountComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  declarations: [
+    AppComponent,
+    QuizComponent,
+    QuestionsComponent,
+    GamerAccountComponent,
+    LoginComponent,
+    ScoresComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [QuizInformations],
   bootstrap: [AppComponent],
 })

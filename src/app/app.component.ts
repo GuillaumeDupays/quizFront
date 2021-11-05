@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GamerAccountComponent } from './gamer-account/gamer-account.component';
 
 @Component({
   selector: 'app-root',

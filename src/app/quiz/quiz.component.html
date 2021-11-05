@@ -1,7 +1,10 @@
 <div class="app-quiz">
-  <!-- <div *ngFor="let the of currGamer"></div>
-  <h1>Bienvenue {{ the.newGamer }}</h1> -->
   <h1>Bienvenue {{ currGamer?.newGamer }}</h1>
+  <div class="row">
+    <button [routerLink]="['/gamer']">Create a new Gamer</button>
+    <button [routerLink]="['/login']">My profile</button>
+    <button>Scores</button>
+  </div>
 
   <h1>{{ quizTitle }}</h1>
   <!-- <a routerLink="/terminator" routerLinkActive="active"></a> -->
