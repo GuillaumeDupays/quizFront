@@ -1,15 +1,18 @@
 <button [routerLink]="['/']">Home</button>
 <h1>Create a Gamer</h1>
-<div>
+<div [formGroup]="form">
   <h2>Your name</h2>
-  <input type="text" [(ngModel)]="userName" /> <br />
-  <select name="icon" id="icon" [(ngModel)]="icon">
+  <input type="text" formControlName="userName" /> <br />
+  <input type="text" formControlName="email" /> <br />
+  <input type="text" formControlName="password" /> <br />
+  <select name="icon" id="icon" formControlName="icon">
     <option value="alien">Alien</option>
     <option value="bowie">Bowie</option>
     <option value="pikachu">Pikachu</option>
   </select>
   <br />
-  <button (click)="saveNewGamer(userName, icon)">Save</button> <br />
+  <button (click)="saveNewGamer()">Save</button>
+  <br />
 </div>
 <button (click)="startAGame()" [routerLink]="['/']" *ngIf="isGamerExist">
   Start a Game

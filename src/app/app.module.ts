@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GamerAccountComponent } from './gamer-account/gamer-account.component';
 import { LoginComponent } from './login/login.component';
 import { ScoresComponent } from './scores/scores.component';
+import { ManageQuestionsComponent } from './manage-questions/manage-questions.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ScoresComponent } from './scores/scores.component';
     GamerAccountComponent,
     LoginComponent,
     ScoresComponent,
+    ManageQuestionsComponent,
   ],
   imports: [
     BrowserModule,

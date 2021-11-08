@@ -1,4 +1,6 @@
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Question } from '../models/question';
 
 const quizList = [
   {
@@ -109,18 +111,17 @@ const questionsByTheme = [
     ],
   },
 ];
+@Injectable({
+  providedIn: 'root',
+})
 export class QuizInformations {
-  constructor() {}
+  constructor(private http: HttpClient) {}
+  private url = 'http://localhost:3000';
   public editDataDetails: any = [];
   public points: number = 0;
   public arrayLength: number = 0;
   // before count points, verify if quiz is finished
   public isQuizEnd: boolean = false;
-  private messageSource = new BehaviorSubject(this.editDataDetails);
-  changeMessage(message: string) {
-    this.messageSource.next(message);
-  }
-  currentMessage = this.messageSource.asObservable();
 
   getQuizList() {
     return quizList;
@@ -142,5 +143,8 @@ export class QuizInformations {
     // if (this.isQuizEnd) {
     //   console.log('this is the END :>> ');
     // }
+  }
+  createQuestion(question: Question) {
+    return this.http.post<Question>(`${this.url}/api/questions`, question);
   }
 }

@@ -24,6 +24,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
   login() {
     const formVal = this.form.value;
-    console.log('formVal :>> ', formVal);
+    if (formVal.email && formVal.password) {
+      this.authService.login(formVal.email, formVal.password).subscribe(() => {
+        console.log('User is logged in');
+        this.router.navigateByUrl('/');
+      });
+    }
   }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '../models/user';
 import { UserAccountService } from '../user-account.service';
 
 @Component({
@@ -8,25 +10,38 @@ import { UserAccountService } from '../user-account.service';
   styleUrls: ['./gamer-account.component.sass'],
 })
 export class GamerAccountComponent implements OnInit {
-  userName: string = '';
-  icon: string = '';
   isGamerExist: boolean = false;
   createdUser: {} = {};
+  form: FormGroup;
   constructor(
+    private fb: FormBuilder,
     private userAccountService: UserAccountService,
     private router: Router
-  ) {}
+  ) {
+    this.form = this.fb.group({
+      userName: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      icon: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {}
 
-  saveNewGamer(newGamer: string, newIcon: string) {
-    this.createdUser = {
-      newGamer: newGamer,
-      newIcon: newIcon,
+  saveNewGamer() {
+    // this.createdUser = {
+    //   newGamer: newGamer,
+    //   newIcon: newIcon,
+    // };
+    const formVal = this.form.value;
+    const newUser: User = {
+      username: formVal.userName,
+      email: formVal.email,
+      password: formVal.password,
+      icon: formVal.icon,
     };
-    this.userAccountService.saveNewUser(newGamer, newIcon);
-    console.log('newGamer :>> ', newGamer);
-    console.log('newIcon :>> ', newIcon);
+    this.userAccountService.saveNewUser({ ...newUser }).subscribe();
+    console.log('newUser :>> ', newUser);
     this.isGamerExist = true;
   }
   startAGame() {
