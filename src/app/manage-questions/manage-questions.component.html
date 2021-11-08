@@ -8,5 +8,11 @@
   <input type="text" formControlName="responseA" placeholder="Réponse a" />
   <input type="text" formControlName="responseB" placeholder="Réponse b" />
   <input type="text" formControlName="responseC" placeholder="Réponse c" />
+  <select name="goodRes" id="goodRes" formControlName="goodRes">
+    <option value="" disabled selected>Sélectionne la bonne réponse</option>
+    <option value="a">Réponse a</option>
+    <option value="b">Réponse b</option>
+    <option value="c">Réponse c</option>
+  </select>
   <button (click)="addQuestion()">Next question</button>
 </div>

@@ -12,7 +12,8 @@ export class ManageQuestionsComponent implements OnInit {
   form: FormGroup;
   numberQuestion: number = 1;
   constructor(
-    private fb: FormBuilder // private questionService: QuizInformations
+    private fb: FormBuilder,
+    private questionService: QuizInformations
   ) {
     this.form = this.fb.group({
       theme: ['', Validators.required],
@@ -21,18 +22,22 @@ export class ManageQuestionsComponent implements OnInit {
       responseA: ['', Validators.required],
       responseB: ['', Validators.required],
       responseC: ['', Validators.required],
+      goodRes: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {}
   addQuestion() {
-    this.numberQuestion += 1;
+    const idQuiz = 1;
+    const newIdQuestion = this.numberQuestion
+      .toString()
+      .concat(idQuiz.toString());
     const form = this.form.value;
     console.log('form :>> ', form);
     const newQuestion: Question = {
-      idQuiz: 1,
+      idQuiz: idQuiz,
       theme: form.theme,
-      idQuestion: 1,
+      idQuestion: parseInt(newIdQuestion),
       numQuestion: this.numberQuestion,
       contentQuestion: form.contentQuestion,
       responses: [
@@ -47,5 +52,6 @@ export class ManageQuestionsComponent implements OnInit {
     console.log('newQuestion :>> ', newQuestion);
     this.form.reset();
     // this.questionService.createQuestion(newQuestion).subscribe();
+    this.numberQuestion += 1;
   }
 }

@@ -1,5 +1,4 @@
 <div class="app-quiz">
-  <h1>Bienvenue {{ currGamer?.newGamer }}</h1>
   <div class="row header-btns-box">
     <button [routerLink]="['/gamer']" class="home-button">Add new Gamer</button>
     <button [routerLink]="['/login']" class="home-button">My profile</button>
@@ -9,6 +8,7 @@
     <button class="home-button">Scores</button>
   </div>
 
+  <h1>Bienvenue {{ currGamer?.newGamer }}</h1>
   <h1>{{ quizTitle }}</h1>
   <!-- <a routerLink="/terminator" routerLinkActive="active"></a> -->
   <div *ngFor="let quiz of currentQuizList" class="btns-box">
