@@ -10,13 +10,13 @@ import { QuizInformations } from '../services/quizInformations';
 })
 export class ManageQuestionsComponent implements OnInit {
   form: FormGroup;
+  numberQuestion: number = 1;
   constructor(
-    private fb: FormBuilder,
-    private questionService: QuizInformations
+    private fb: FormBuilder // private questionService: QuizInformations
   ) {
     this.form = this.fb.group({
-      quizName: ['', Validators.required],
-      numQuestion: ['', Validators.required],
+      theme: ['', Validators.required],
+      numberQuestion: ['', Validators.required],
       contentQuestion: ['', Validators.required],
       responseA: ['', Validators.required],
       responseB: ['', Validators.required],
@@ -26,12 +26,14 @@ export class ManageQuestionsComponent implements OnInit {
 
   ngOnInit(): void {}
   addQuestion() {
+    this.numberQuestion += 1;
     const form = this.form.value;
     console.log('form :>> ', form);
     const newQuestion: Question = {
       idQuiz: 1,
+      theme: form.theme,
       idQuestion: 1,
-      numQuestion: form.numQuestion,
+      numQuestion: this.numberQuestion,
       contentQuestion: form.contentQuestion,
       responses: [
         {
@@ -42,6 +44,8 @@ export class ManageQuestionsComponent implements OnInit {
         },
       ],
     };
-    this.questionService.createQuestion(newQuestion).subscribe();
+    console.log('newQuestion :>> ', newQuestion);
+    this.form.reset();
+    // this.questionService.createQuestion(newQuestion).subscribe();
   }
 }

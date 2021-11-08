@@ -2,10 +2,17 @@
 <h1>Create a Gamer</h1>
 <div [formGroup]="form">
   <h2>Your name</h2>
-  <input type="text" formControlName="userName" /> <br />
-  <input type="text" formControlName="email" /> <br />
-  <input type="text" formControlName="password" /> <br />
-  <select name="icon" id="icon" formControlName="icon">
+
+  <input
+    type="text"
+    formControlName="userName"
+    placeholder="Nom d'utilisateur"
+  />
+  <br />
+  <input type="text" formControlName="email" placeholder="Email" /> <br />
+  <input type="text" formControlName="password" placeholder="Mot de passe" />
+  <br />
+  <select name="icon" id="icon" formControlName="icon" placeholder="Icône">
     <option value="alien">Alien</option>
     <option value="bowie">Bowie</option>
     <option value="pikachu">Pikachu</option>

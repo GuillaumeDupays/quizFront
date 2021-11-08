@@ -1,28 +1,12 @@
-<p>manage-questions works!</p>
-<button [routerLink]="['/']">Retour</button>
-<h1>Add a new Question</h1>
-<div [formGroup]="form">
-  <select name="quiz" id="quiz" formControlName="quizName">
-    <option value="batman">Batman</option>
-    <option value="bowie">Bowie</option>
-    <option value="terminator">Terminator</option>
-  </select>
-  <input type="text" formControlName="numQuestion" placeholder="numQuestion" />
-  <br />
-  <input
-    type="text"
-    formControlName="contentQuestion"
-    placeholder="contentQuestion"
-  />
-  <br />
-  <input type="text" formControlName="responseA" placeholder="responseA" />
-  <br />
-  <input type="text" formControlName="responseB" placeholder="responseB" />
-  <br />
-  <input type="text" formControlName="responseC" placeholder="responseC" />
-  <br />
-  <br />
-  <button (click)="addQuestion()">Save question</button>
-  <br />
+<div [formGroup]="form" class="form-question">
+  <button [routerLink]="['/']">Retour</button>
+  <h1>Add a new Question</h1>
+  <input type="text" formControlName="theme" placeholder="Theme" />
+
+  <div value="numberQuestion">Question numéro : {{ numberQuestion }}</div>
+  <input type="text" formControlName="contentQuestion" placeholder="Question" />
+  <input type="text" formControlName="responseA" placeholder="Réponse a" />
+  <input type="text" formControlName="responseB" placeholder="Réponse b" />
+  <input type="text" formControlName="responseC" placeholder="Réponse c" />
+  <button (click)="addQuestion()">Next question</button>
 </div>
-<br />
