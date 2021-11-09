@@ -1,4 +1,5 @@
 export interface Question {
+  autor?: String;
   theme?: String;
   idQuiz: Number;
   idQuestion: Number;

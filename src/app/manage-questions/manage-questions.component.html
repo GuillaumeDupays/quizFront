@@ -1,8 +1,14 @@
 <div [formGroup]="form" class="form-question">
   <button [routerLink]="['/']">Retour</button>
+  <div *ngIf="!isThemeChosen">
+    <h1>First choose a theme</h1>
+    <input type="text" formControlName="theme" placeholder="Theme" />
+  </div>
+  <div *ngIf="isThemeChosen">
+    Theme of quiz :
+    <h2>{{ quizTheme }}</h2>
+  </div>
   <h1>Add a new Question</h1>
-  <input type="text" formControlName="theme" placeholder="Theme" />
-
   <div value="numberQuestion">Question numéro : {{ numberQuestion }}</div>
   <input type="text" formControlName="contentQuestion" placeholder="Question" />
   <input type="text" formControlName="responseA" placeholder="Réponse a" />
