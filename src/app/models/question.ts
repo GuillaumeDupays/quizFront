@@ -1,7 +1,7 @@
 export interface Question {
   autor?: String;
   theme?: String;
-  idQuiz: Number;
+  idQuiz: String;
   idQuestion: Number;
   numQuestion: Number;
   contentQuestion: String;
